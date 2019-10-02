@@ -19,19 +19,21 @@ const pizzas = [
 
 ];
 
-app.get('/karen-mservice-repo', (req, resp) => {
-    console.log('Returning karen-mservice-repo');
+// GET /pizzas
+app.get('/pizzas', (req, resp) => {
+    console.log('Returning pizza collection');
     resp.setHeader('Content-Type', 'application/json');
     // rerun pizzas
     resp.send(pizzas)
 });
 
-app.get('/karen-mservice-repo/:id([0-9]+)', (req, resp) => {
+// GET /pizzas/{id}
+app.get('/pizzas/:id([0-9]+)', (req, resp) => {
     // get the id form the url path
     const id = parseInt(req.params['id']);
 
     // log which endpoint was hit
-    console.log(`Endpoint /karen-mservice-repo/${id} hit`);
+    console.log(`Endpoint /pizzas/${id} hit`);
 
     // find pizza with the id in the request
     const pizza = pizzas.find(pizza => pizza.id === id);
